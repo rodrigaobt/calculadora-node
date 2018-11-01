@@ -1,0 +1,155 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<title> calculadora básica com Node</title>
+<script type="text/javascript">
+ function opcao(){
+	 if(document.getElementById("operacao").value == ""){
+	 	alert("Por favor selecione uma opeção");
+	 }
+	 if(document.getElementById("operacao").value == "1"){
+	 	if(valida()){
+	 		soma();
+		 }
+	 }
+	 if(document.getElementById("operacao").value == "2"){
+	 	if(valida()){
+			subtrair();
+	 	}
+	 }
+	 if(document.getElementById("operacao").value == "3"){
+	 	if(valida()){
+		dividir();
+	 }
+	 }
+	 if(document.getElementById("operacao").value == "4"){
+	 	if(valida()){
+	 		multiplicar();
+	 	}
+	 }
+ }
+ 
+function valida(){
+	 if(document.getElementById("valorX").value == "" || document.getElementById("valorY").value == ""){
+	 	//alert("Valor não informador");
+	 	return false;
+	 }else{
+	 	if(validanumero()){
+	 		return true;
+	 	}else{
+	 		return false;
+	 	}
+	 }
+}
+
+ function validanumero(){
+ 	var valorX = document.getElementById("valorX").value;
+	 var valorY = document.getElementById("valorY").value;
+ 	if(isNaN(valorX)){
+ 		alert("Valor primeiro campo não numerico");
+		return false;
+ 	}
+ 	if(isNaN(valorY)){
+ 		alert("Valor do segundo campo não numerico");
+ 		return false;
+ 	}else{
+ 		return true;
+ 	}
+}
+ 
+function soma(){
+	var valorX = document.getElementById("valorX").value;
+ 	var valorY = document.getElementById("valorY").value;
+ 	var resultado = parseInt(valorX) + parseInt(valorY);
+ 	document.getElementById("resultado").value = resultado;
+}
+
+ function subtrair(){
+ 	var valorX = document.getElementById("valorX").value;
+ 	var valorY = document.getElementById("valorY").value;
+ 	var resultado = parseInt(valorX) - parseInt(valorY);
+ 	document.getElementById("resultado").value = resultado;
+}
+
+ function dividir(){
+ 	var valorX = document.getElementById("valorX").value;
+ 	var valorY = document.getElementById("valorY").value;
+ 	var resultado = parseInt(valorX) / parseInt(valorY);
+ 	document.getElementById("resultado").value = resultado;
+}
+
+ function multiplicar(){
+ 	var valorX = document.getElementById("valorX").value;
+ 	var valorY = document.getElementById("valorY").value;
+ 	var resultado = parseInt(valorX) * parseInt(valorY);
+ 	document.getElementById("resultado").value = resultado;
+}
+ 
+ </script>
+ </head>
+ 
+<body>
+<div class="container" style="background-color: #4d79ff;">
+	<div style="padding-top: 10px; text-align: center; font-size: 22px">
+		<p>CALCULADORA USANDO NODE</p>
+	</div >
+  	<div class="row">
+  	
+	<div class="container-fluid" style="background-color: lightblue; padding-top: 20px">
+	<div class="col-md-6 col-md-offset-4">
+		<div id="principal">
+		 	<form id="form">
+		 		<div class="row justify-content-center">
+			 		<div class="col-md-8">
+				 		<div class="input">
+					 		<input id="valorX" class="form-control" type="text" style="text-align: right; font-size: 18px" />
+					 	</div>
+					</div>
+				</div>
+				<div class="row justify-content-center">
+					<div class="col-md-4 col-md-offset-6" style="padding-left: 40px">
+					 	<div class="input">
+							<select class="custom-select mr-sm-2" id="operacao" onblur="opcao()" style="font-size: 18px">
+						 		<option id="valor" value="1">+</option>
+						 		<option id="valor" value="2">-</option>
+						 		<option id="valor" value="3">÷</option>
+						 		<option id="valor" value="4">×</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="row justify-content-center">
+					<div class="col-md-8">
+						<div class="input">
+							<input id="valorY" class="form-control" type="text" style="text-align: right; font-size: 18px" onblur="opcao()"/>
+						</div>
+					</div>
+				</div>
+				<!--<b>=</b> -->
+				<div class="row justify-content-center">
+					<div class="col-md-8">
+						<hr>
+					</div>
+				</div>
+				<div class="row justify-content-center">
+					<div class="col-md-8">
+						<input id="resultado" class="form-control" type="text" style="text-align: right; font-size: 18px" disabled="true"/>
+					</div>
+				</div>
+				<div class="row justify-content-center">
+					<div class="col-md-8" style="padding-top: 20px">
+						<input id="calcular" class="btn btn-primary btn-lg btn-block" type="button" value="Calcular" onclick="opcao()"/>
+						<input id="limpar" class="btn btn-light btn-lg btn-block" type="reset" value="Resetar"/>
+					</div>
+				</div>
+			</form>
+	 	</div>
+	</div>
+</div>
+</div>
+</div>
+</body>
+</html>
